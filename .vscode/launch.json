@@ -1,0 +1,18 @@
+{
+   
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "preLaunchTask": "Build Active C++ File",
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "Launch cpp debugger",
+            "program": "${workspaceFolder}\\main.exe",
+            "miDebuggerPath": "c:\\mingw64\\bin\\gdb.exe",
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+
+        }
+    ]
+}
