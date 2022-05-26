@@ -1,25 +1,26 @@
 /**
  * @file main.cpp
  * @author Autumn
- * @brief EntryPoint to the file.
+ * @brief Entrypoint to the application.
  * @version 0.1
  * @date 2022-05-26 Initial Creation
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
-
-
-#include "engine/App.hpp"
-
+#include "engine/Core.h"
+#include "TestScene.h"
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
+    uge::TestScene *scene = new uge::TestScene();
     uge::App app{};
 
+    app.addScene(scene);
+    app.switchScene(0);
     app.run();
 
     return 0;
