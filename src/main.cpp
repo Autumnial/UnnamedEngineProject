@@ -19,8 +19,8 @@ int main()
     uge::TestScene *scene = new uge::TestScene();
     uge::App app{};
 
-    app.addScene(scene);
-    app.switchScene(0);
+    app.addScene(scene, "firstScene");
+    app.switchScene("firstScene");
     app.run();
 
     return 0;

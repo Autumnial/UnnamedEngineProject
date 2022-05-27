@@ -2,8 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include "Scene.h"
 #include <iostream>
-#include <vector>
+#include <map>
 #include <Utils/Logger.h>
+#include <string>
 
 namespace uge
 {
@@ -12,29 +13,31 @@ namespace uge
     {
     private:
         sf::ContextSettings settings;
-        std::vector<Scene *> scenes;
+        std::map<std::string, Scene *> scenes;
         Scene *currScene;
         Logger logger{};
 
     public:
         static sf::RenderWindow *window;
 
-        // todo: make it easier to reference a scene
         /**
-         * Adds a scene to the list of available scenes.
+         * Adds a scene and a name to the list of available scenes.
          *
-         * THE ORDER IN WHICH YOU ADD SCENES IS VERY IMPORTANT, PLEASE REMEMBER THIS FOR NOW
-         *
+         * @param name name used to reference the Scene.
          * @param scene pointer to the scene to add.
          */
-        void addScene(Scene *scene)
+        void addScene(Scene *scene, std::string name)
         {
-            scenes.push_back(scene);
+            scenes.insert({name, scene});
         }
 
-        void switchScene(int scene)
+        /**
+         * Switches to scene by name 
+         * @param scene name of the scene you want to switch to
+         */
+        void switchScene(std::string scene)
         {
-            currScene = scenes[scene];
+            currScene = scenes.find(scene)->second;
             currScene->init();
         }
 
